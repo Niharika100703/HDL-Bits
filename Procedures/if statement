@@ -1,0 +1,30 @@
+//An if statement usually creates a 2-to-1 multiplexer, selecting one input if the condition is true, and the other input if the condition is false.
+//This is equivalent to using a continuous assignment with a conditional operator.
+
+//Build a 2-to-1 mux that chooses between a and b. Choose b if both sel_b1 and sel_b2 are true. Otherwise, choose a. Do the same twice, once using assign statements and once using a procedural if statement.
+
+// synthesis verilog_input_version verilog_2001
+//Synthesis is the process of converting a high-level description of design (Verilog/VHDL) into an optimized gate-level representation.
+//Verilog-2001 updates the syntax for declaring inputs and outputs of modules, tasks and functions to be more like the ANSI (American National Standards Institute) C language.
+//The ANSI specifies the syntax and semantics of programs written in C.
+
+
+
+module top_module(
+    input a,
+    input b,
+    input sel_b1,
+    input sel_b2,
+    output wire out_assign,          // use net type (wire) for continuous assignment statements
+    output reg out_always   );       // use variable type (reg) for always block or procedural statements
+
+    assign out_assign = (sel_b1 & sel_b2 == 1)? b:a;
+    always @(*)
+        begin
+            if(sel_b1 & sel_b2 == 1)
+                out_always = b;
+            else
+                out_always = a;
+        end
+    
+endmodule
