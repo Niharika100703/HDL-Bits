@@ -21,7 +21,8 @@ module top_module ();
         reset = 1'b0;   
     end
     
-    always@(posedge clk)begin
+    always@(posedge clk)     // active high synchronous reset
+       begin
         if(reset)begin
             t <= 1'b0;
         end
