@@ -1,0 +1,22 @@
+Question 
+
+You are provided a module with the following declaration:
+
+module dut ( input clk ) ;
+Write a testbench that creates one instance of module dut (with any instance name), and create a clock signal to drive the module's clk input. 
+The clock has a period of 10 ps. 
+The clock should be initialized to zero with its first transition being 0 to 1.
+
+Solution
+
+module top_module ( ); 
+reg clk;                    // in testbenches we declare inputs as reg
+    dut uut(clk);           // instance name is uut
+    
+    initial clk = 0;
+    always begin            // by using always the clock cycle repeats
+        #5 clk = ~clk;      // total time period is 10ps. So transition from 0 to 1 or 1 to 0 should take 5ps. 
+    end
+endmodule
+
+
