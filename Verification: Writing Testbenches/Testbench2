@@ -26,7 +26,7 @@ module top_module();
         in = 0;
     end
     
-    always 
+    always                  // its 'always begin', not 'always initial clk =0; begin', we can also write 'initial clk=0; always begin'
         begin
         #5 clk = ~clk;
     end
