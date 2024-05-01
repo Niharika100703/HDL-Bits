@@ -1,0 +1,19 @@
+Let's write a verilog code for a half adder
+
+module half_adder(        // module name is half_adder
+input a,
+input b,
+output s,
+output c
+);
+xor a1(s,a,b);
+and a2(c,a,b);
+endmodule
+
+Testbench
+
+module stimulus(); // we can give any name other than stimulus
+reg a; reg b; // input == reg
+wire s; wire c; // output == wire
+half_adder uut (a,b,s,c);  // module name
+initial
